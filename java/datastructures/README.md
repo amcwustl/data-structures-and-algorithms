@@ -1,11 +1,13 @@
 # Challenge 06
-<!-- Description of the challenge -->
+Addition of Append, InsertBefore, and InsertAfter methods to the linked list class from code challenge 05
 
 ## Whiteboard Process
-<!-- Embedded whiteboard image -->
+Append Method:
+![Append Method](Resources/Append.png)
 
-## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+Insert Before Method:
+![Insert Before](Resources/InsertBefore.png)
 
-## Solution
-<!-- Show how to run your code, and examples of it in action -->
+Insert After Method:
+![Insert After](Resources/InsertAfter.png)
+
