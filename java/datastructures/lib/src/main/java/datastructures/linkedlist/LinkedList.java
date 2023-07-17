@@ -10,8 +10,21 @@ public class LinkedList
   public void insert(int value)
   {
     Node newNode = new Node(value);
+    if (this.tail == null){
+      this.tail = newNode;
+    }
     newNode.next = head;
     this.head = newNode;
+  }
+
+  public void append(int value){
+    if (this.head == null){
+      this.insert(value);
+    } else {
+      Node newNode = new Node(value);
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
   }
   public boolean includes(int value)
   {

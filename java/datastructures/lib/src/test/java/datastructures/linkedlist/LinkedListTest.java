@@ -91,4 +91,17 @@ public class LinkedListTest
     assertEquals(expectedToStringValue, actualToStringValue);
 
   }
+
+  @Test public void appendTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+    sut.append(10);
+    int expectedLastValue = 10;
+    int actualLastValue = sut.tail.value;
+    assertEquals(expectedLastValue, actualLastValue);
+
+  }
 }
