@@ -44,6 +44,22 @@ public class LinkedList
       prevNode.next = newNode;
     }
   }
+
+  public void insertAfter(int value, int newValue) {
+    if (!this.includes(value)) {
+      System.out.println("Error: Specified Value does not Exist in Linked List");
+    } else if (this.tail.value == value) {
+      this.append(newValue);
+    } else {
+      Node currentNode = this.head;
+      while (currentNode.value != value){
+        currentNode = currentNode.next;
+      }
+      Node newNode = new Node(newValue);
+      newNode.next = currentNode.next;
+      currentNode.next = newNode;
+    }
+  }
   public boolean includes(int value)
   {
     Node currentNode = this.head;

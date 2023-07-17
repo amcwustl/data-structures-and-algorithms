@@ -112,7 +112,23 @@ public class LinkedListTest
     sut.insert(2);
     sut.insert(3);
     sut.insertBefore(1, 25);
-    System.out.println(sut.toString());
+
+    String actualToStringValue = sut.toString();
+    System.out.println(actualToStringValue);
+    String expectedToStringValue = "{ 3 } -> { 2 } -> { 25 } -> { 1 } -> NULL";
+
+    assertEquals(expectedToStringValue, actualToStringValue);
+
+  }
+
+  @Test public void insertAfterTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+    sut.insertAfter(2, 25);
+
     String actualToStringValue = sut.toString();
     System.out.println(actualToStringValue);
     String expectedToStringValue = "{ 3 } -> { 2 } -> { 25 } -> { 1 } -> NULL";

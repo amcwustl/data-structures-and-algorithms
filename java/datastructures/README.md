@@ -1,11 +1,11 @@
-# Data Structures
+# Challenge 06
+<!-- Description of the challenge -->
 
-## Implementation Notes
+## Whiteboard Process
+<!-- Embedded whiteboard image -->
 
-## Code Challenges
+## Approach & Efficiency
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-### Challenge 01
-
-Location: `codechallenges/linkedlist/LinkedListChallenges`
-
-Method: `linkedListChallenge06()`
+## Solution
+<!-- Show how to run your code, and examples of it in action -->
