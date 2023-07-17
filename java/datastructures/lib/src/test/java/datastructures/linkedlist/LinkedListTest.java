@@ -105,7 +105,24 @@ public class LinkedListTest
 
   }
 
-  @Test public void insertBeforeTest()
+  @Test public void appendMultipleTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+    sut.append(25);
+    sut.append(30);
+
+    String actualToStringValue = sut.toString();
+    System.out.println(actualToStringValue);
+    String expectedToStringValue = "{ 3 } -> { 2 } -> { 1 } -> { 25 } -> { 30 } -> NULL";
+
+    assertEquals(expectedToStringValue, actualToStringValue);
+
+  }
+
+  @Test public void insertBeforeMiddleTest()
   {
     LinkedList sut = new LinkedList();
     sut.insert(1);
@@ -121,7 +138,23 @@ public class LinkedListTest
 
   }
 
-  @Test public void insertAfterTest()
+  @Test public void insertBeforeFirstTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+    sut.insertBefore(3, 25);
+
+    String actualToStringValue = sut.toString();
+    System.out.println(actualToStringValue);
+    String expectedToStringValue = "{ 25 } -> { 3 } -> { 2 } -> { 1 } -> NULL";
+
+    assertEquals(expectedToStringValue, actualToStringValue);
+
+  }
+
+  @Test public void insertAfterMiddleTest()
   {
     LinkedList sut = new LinkedList();
     sut.insert(1);
@@ -132,6 +165,22 @@ public class LinkedListTest
     String actualToStringValue = sut.toString();
     System.out.println(actualToStringValue);
     String expectedToStringValue = "{ 3 } -> { 2 } -> { 25 } -> { 1 } -> NULL";
+
+    assertEquals(expectedToStringValue, actualToStringValue);
+
+  }
+
+  @Test public void insertAfterLastTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+    sut.insertAfter(1, 25);
+
+    String actualToStringValue = sut.toString();
+    System.out.println(actualToStringValue);
+    String expectedToStringValue = "{ 3 } -> { 2 } -> { 1 } -> { 25 } -> NULL";
 
     assertEquals(expectedToStringValue, actualToStringValue);
 
