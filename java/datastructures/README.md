@@ -11,3 +11,7 @@ Insert Before Method:
 Insert After Method:
 ![Insert After](Resources/InsertAfter.png)
 
+# Challenge 07 
+
+## Whiteboard Process
+
