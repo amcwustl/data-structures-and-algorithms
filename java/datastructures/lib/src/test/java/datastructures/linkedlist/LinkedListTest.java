@@ -2,8 +2,7 @@ package datastructures.linkedlist;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LinkedListTest
 {
@@ -183,6 +182,60 @@ public class LinkedListTest
     String expectedToStringValue = "{ 3 } -> { 2 } -> { 1 } -> { 25 } -> NULL";
 
     assertEquals(expectedToStringValue, actualToStringValue);
+
+  }
+
+  @Test public void kthValueGreaterThanLengthTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+
+    assertThrows(IllegalArgumentException.class, () -> sut.kthFromEnd(4));
+  }
+
+  @Test public void kthValueEqualToLengthTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+
+    assertThrows(IllegalArgumentException.class, () -> sut.kthFromEnd(3));
+  }
+
+  @Test public void kthNegativeTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+
+    assertThrows(IllegalArgumentException.class, () -> sut.kthFromEnd(-2));
+  }
+
+  @Test public void kthListSizeOneTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    int expected = 1;
+    int actual = sut.kthFromEnd(0);
+    assertEquals(expected, actual);
+
+  }
+
+  @Test public void kthInTheMiddleTest()
+  {
+    LinkedList sut = new LinkedList();
+    sut.insert(1);
+    sut.insert(2);
+    sut.insert(3);
+    sut.insert(4);
+    sut.insert(5);
+    int expected = 3;
+    int actual = sut.kthFromEnd(2);
+    assertEquals(expected, actual);
 
   }
 }

@@ -72,6 +72,29 @@ public class LinkedList
     return false;
   }
 
+  public int kthFromEnd(int k) {
+    if (k < 0) {
+      throw new IllegalArgumentException("k can not be negative");
+    }
+    Node currentNode = this.head;
+    int length = 0;
+    while (currentNode != null) {
+      currentNode = currentNode.next;
+      length += 1;
+    }
+    if (k >= length){
+      throw new IllegalArgumentException("k exceeds the length of the list.");
+    } else {
+      currentNode = this.head;
+      int iterations = length - k - 1;
+      while (iterations > 0) {
+        currentNode = currentNode.next;
+        iterations -= 1;
+      }
+      return currentNode.value;
+    }
+  }
+
   @Override
   public String toString()
   {
