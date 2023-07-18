@@ -11,7 +11,9 @@ Insert Before Method:
 Insert After Method:
 ![Insert After](Resources/InsertAfter.png)
 
-# Challenge 07 
+# Challenge 07
+Addition of kthFromEnd function which returns value k spots from the end of a linked list.
 
 ## Whiteboard Process
+![kth From End](Resources/kthFromEnd.png)
 
