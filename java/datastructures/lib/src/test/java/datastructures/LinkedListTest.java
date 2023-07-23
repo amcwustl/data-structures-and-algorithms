@@ -1,5 +1,7 @@
-package datastructures.linkedlist;
+package datastructures;
 
+import datastructures.linkedlist.LinkedList;
+import datastructures.linkedlist.Node;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
