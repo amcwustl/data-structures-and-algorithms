@@ -8,24 +8,41 @@ public class Stack<T>
 
   public void push(T valueToPush)
   {
-    // TODO: implement me
+    Node<T> newNode = new Node<>(valueToPush);
+    if (isEmpty()) {
+      top = newNode;
+    } else {
+      newNode.next = top;
+      top = newNode;
+    }
+
   }
 
   public T pop()
   {
-    // TODO: implement me
-    return null;
+    if(isEmpty()){
+      return null;
+    }
+    Node<T> temp = top;
+    top = top.next;
+    temp.next = null;
+
+    return temp.value;
   }
 
   public T peek()
   {
-    // TODO: implement me
-    return null;
+    if (isEmpty()){
+      return null;
+    }
+    return top.value;
   }
 
   public boolean isEmpty()
   {
-    // TODO: implement me
+    if (top == null){
+      return true;
+    }
     return false;
   }
 }

@@ -9,24 +9,50 @@ public class Queue<T>
 
   public void enqueue(T valueToEnqueue)
   {
-    // TODO: implement me
+    Node<T> newNode = new Node<>(valueToEnqueue);
+    if (isEmpty()){
+      front = newNode;
+      back = newNode;
+    } else {
+      newNode.next = back;
+      back = newNode;
+    }
   }
 
   public T dequeue()
   {
-    // TODO: implement me
-    return null;
+    if (isEmpty()){
+      return null;
+    }
+    Node<T> tempFront = front;
+    if (front == back){
+      front = null;
+      back = null;
+    } else {
+      Node<T> tempNewFront = back;
+      while (tempNewFront.next != front){
+        tempNewFront = tempNewFront.next;
+      }
+      tempNewFront.next = null;
+    }
+
+    return tempFront.value;
   }
 
   public T peek()
   {
-    // TODO: implement me
-    return null;
+    if (isEmpty()){
+      return null;
+    }
+    return front.value;
   }
 
   public boolean isEmpty()
   {
-    // TODO: implement me
+    if (front == null){
+      return true;
+    }
     return false;
   }
 }
+
