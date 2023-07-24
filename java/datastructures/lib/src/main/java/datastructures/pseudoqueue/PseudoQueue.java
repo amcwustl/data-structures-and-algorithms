@@ -12,7 +12,7 @@ public class PseudoQueue<T> {
   }
 
   public T dequeue() {
-    if (stackOne.isEmpty()) {
+    if (stackOne.isEmpty() || stackOne == null) {
       throw new IllegalStateException("PseudoQueue is empty.  Can not dequeue.");
     }
     if (stackTwo == null){
@@ -30,6 +30,9 @@ public class PseudoQueue<T> {
 
   @Override
   public String toString() {
+    if (stackOne == null){
+      return "Empty PseudoQueue";
+    }
     if (stackOne.isEmpty()){
       return "Empty PseudoQueue";
     }
