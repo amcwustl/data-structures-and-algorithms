@@ -1,22 +1,44 @@
 # PsuedoQueue
-Write a function called `reverseArray` which takes an array as an argument. Without utilizing any of the built-in methods available to your language, return an array with elements in reversed order.
+Create a new `PseudoQueue` class.  This class will use 2 stack instances to create and manage a queue.  Create enqueue and dequeue methods for this class.
 
 ## Whiteboard Process
-![Whiteboard](arrayReverse.png)
+![Whiteboard](PseudoQueue.jpg)
 
 ## Approach & Efficiency
 
-Given our discussion in class, I decided to just copy the array in reverse to a new array.  I know that technically copying it in place by swapping the first index with the last and so on is half of the steps, the big O on time is still O(n) and I decided it was not worth complicating the code by creating a temporary value to allow for swapping.  This to me seemed the easiest and most readable solution even if I can think of a couple of solutions that would technically be more efficient on memory (reversing in place).
-The big O on this algorithm will be O(n) as the number of steps to complete will scale linearly with the size of the input array.
+The PseudoQueue class has two attributes of stackOne and stackTwo.  StackOne is used for pushing values into the queue but because it is a FILO structure,
+I need to use a second stack that will reverse the values when it is time to dequeue the bottom value from stackOne.  Every method is O(1) except
+for my dequeue method for time because the time it takes will scale linearly with the size of my queue as I always need to pop every value individually
+over into stackTwo and then pop all those values back into stack one.
 
 ## Solution
 ```java
-public static int[] reverseArray(int[] Arr) {
-    int n = Arr.length;
-    int[] newArr = new int[n];
-    for (int i = 0; i < n; i++) {
-      newArr[i] = Arr[n - 1 - i];
+public class PseudoQueue<T> {
+    Stack<T> stackOne;
+    Stack<T> stackTwo;
+
+    public void enqueue(T value) {
+        if (stackOne == null) {
+            stackOne = new Stack<>();
+        }
+        stackOne.push(value);
     }
-    return newArr;
-  }
+
+    public T dequeue() {
+        if (stackOne.isEmpty() || stackOne == null) {
+            throw new IllegalStateException("PseudoQueue is empty.  Can not dequeue.");
+        }
+        if (stackTwo == null) {
+            stackTwo = new Stack<>();
+        }
+        while (!stackOne.isEmpty()) {
+            stackTwo.push(stackOne.pop());
+        }
+        T dequeueVal = stackTwo.pop();
+        while (!stackTwo.isEmpty()) {
+            stackOne.push(stackTwo.pop());
+        }
+        return dequeueVal;
+    }
+}
   ```
