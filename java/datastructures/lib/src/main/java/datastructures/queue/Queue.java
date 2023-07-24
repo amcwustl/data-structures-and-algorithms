@@ -22,7 +22,7 @@ public class Queue<T>
   public T dequeue()
   {
     if (isEmpty()){
-      return null;
+      throw new IllegalStateException("Queue is empty, cannot dequeue.");
     }
     Node<T> tempFront = front;
     if (front == back){
@@ -34,6 +34,7 @@ public class Queue<T>
         tempNewFront = tempNewFront.next;
       }
       tempNewFront.next = null;
+      front = tempNewFront;
     }
 
     return tempFront.value;
@@ -42,7 +43,7 @@ public class Queue<T>
   public T peek()
   {
     if (isEmpty()){
-      return null;
+      throw new IllegalStateException("Queue is empty, cannot peek.");
     }
     return front.value;
   }
@@ -53,6 +54,22 @@ public class Queue<T>
       return true;
     }
     return false;
+  }
+
+  @Override
+  public String toString() {
+    if (isEmpty()){
+      return "Empty Queue";
+    }
+    StringBuilder newString = new StringBuilder();
+    newString.append("Queue: Back -> ");
+    Node<T> temp = back;
+    while (temp != null){
+      newString.append("{" + temp.value + "} -> ");
+      temp = temp.next;
+    }
+    newString.append("Front");
+    return newString.toString();
   }
 }
 
