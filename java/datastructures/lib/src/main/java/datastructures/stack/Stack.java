@@ -21,7 +21,7 @@ public class Stack<T>
   public T pop()
   {
     if(isEmpty()){
-      return null;
+      throw new IllegalStateException("Stack is empty, cannot pop");
     }
     Node<T> temp = top;
     top = top.next;
@@ -33,7 +33,7 @@ public class Stack<T>
   public T peek()
   {
     if (isEmpty()){
-      return null;
+      throw new IllegalStateException("Stack is empty, cannot peek");
     }
     return top.value;
   }
@@ -44,5 +44,21 @@ public class Stack<T>
       return true;
     }
     return false;
+  }
+
+  @Override
+  public String toString() {
+    if (isEmpty()){
+      return "Empty Stack";
+    }
+    StringBuilder newString = new StringBuilder();
+    newString.append("Stack: Top -> ");
+    Node<T> temp = top;
+    while (temp != null){
+      newString.append("{" + temp.value + "} -> ");
+      temp = temp.next;
+    }
+    newString.append("null");
+    return newString.toString();
   }
 }

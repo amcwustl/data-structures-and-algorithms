@@ -9,4 +9,11 @@ public class Node<T>
   {
     this.value = value;
   }
+
+  @Override
+  public String toString() {
+    return "Node{" +
+      "value=" + value +
+      '}';
+  }
 }
