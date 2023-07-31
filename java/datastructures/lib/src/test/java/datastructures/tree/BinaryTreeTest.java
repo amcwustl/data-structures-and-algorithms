@@ -77,4 +77,25 @@ public class BinaryTreeTest {
 
     assertArrayEquals(expected, actual);
   }
+
+  @Test
+  void findMaxTest(){
+    BinaryTree tree = new BinaryTree();
+    Node one = new Node(1);
+    Node two = new Node(2);
+    Node three = new Node(3);
+    Node four = new Node(15);
+    Node five = new Node(20);
+
+    tree.root = one;
+    one.left = two;
+    one.right = three;
+    three.left = four;
+    three.right = five;
+
+    int expected = 20;
+    int actual = tree.findMax();
+
+    assertEquals(expected, actual);
+  }
 }

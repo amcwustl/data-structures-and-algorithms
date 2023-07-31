@@ -47,4 +47,25 @@ public class BinaryTree {
     postOrder(current.right, values);
     values.add(current.value);
   }
+
+  public int findMax(){
+    if (root == null){
+      throw new IllegalArgumentException("The tree is empty");
+    }
+    return findMaxHelper(root);
+  }
+
+  public Integer findMaxHelper(Node current){
+    if (current == null) return Integer.MIN_VALUE;
+    Integer leftMax = findMaxHelper(current.left);
+    Integer rightMax = findMaxHelper(current.right);
+
+    if(current.value >= leftMax && current.value >= rightMax){
+      return current.value;
+    } else if (leftMax >= current.value && leftMax >= rightMax){
+      return leftMax;
+    } else {
+      return rightMax;
+    }
+  }
 }
