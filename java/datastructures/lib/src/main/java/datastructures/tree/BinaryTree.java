@@ -1,5 +1,7 @@
 package datastructures.tree;
 
+import datastructures.queue.Queue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +48,26 @@ public class BinaryTree {
     postOrder(current.left, values);
     postOrder(current.right, values);
     values.add(current.value);
+  }
+
+  public List<Integer> breadthFirst(){
+    if (root == null){
+      throw new IllegalArgumentException("the tree is empty");
+    }
+    List<Integer> values = new ArrayList<>();
+    Queue<Node> queue = new Queue();
+    queue.enqueue(root);
+
+    while (!queue.isEmpty()){
+      Node front = queue.dequeue();
+      values.add(front.value);
+      if (front.left != null){
+        queue.enqueue(front.left);
+      } else if (front.right != null){
+        queue.enqueue(front.right);
+      }
+    }
+    return values;
   }
 
   public int findMax(){
