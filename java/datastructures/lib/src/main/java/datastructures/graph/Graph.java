@@ -45,10 +45,9 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
 
   }
 
-  public LinkedList<Vertex<T>> getVertices()  // getNodes()
+  public LinkedList<Vertex<T>> getVertices()
   {
-    // TODO: implement me
-    return null;
+      return new LinkedList<>(adjacencyLists.keySet());
   }
 
   public LinkedList<Edge<T>> getNeighbors(Vertex<T> vertex)
@@ -59,7 +58,7 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
 
   public int size()
   {
-    return numberOfVertices;  // TODO: make sure this gets updated at the right times
+    return numberOfVertices;
   }
 
   @Override

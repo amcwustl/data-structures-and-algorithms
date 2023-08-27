@@ -36,6 +36,6 @@ public class GraphTest {
     Edge<Integer> edge = adjacencyList1.get(0);
     assertEquals(vertex2, edge.getDestination());
     assertEquals(5, edge.getWeight());
-    
+
   }
 }
