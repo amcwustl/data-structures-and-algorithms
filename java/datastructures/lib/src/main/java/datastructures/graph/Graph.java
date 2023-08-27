@@ -52,8 +52,10 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
 
   public LinkedList<Edge<T>> getNeighbors(Vertex<T> vertex)
   {
-    // TODO: implement me
-    return null;
+    if (!adjacencyLists.containsKey(vertex)){
+      throw new IllegalArgumentException("Vertex does not exist in the graph.");
+    }
+    return adjacencyLists.get(vertex);
   }
 
   public int size()
