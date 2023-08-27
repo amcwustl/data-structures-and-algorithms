@@ -92,5 +92,23 @@ public class GraphTest {
     assertEquals(3, actual);
   }
 
+  @Test
+  public void testSingleVertexAndEdge() {
+    Graph<Integer> graph = new Graph<>(10);
+
+    Vertex<Integer> vertex1 = graph.addVertex(1);
+    Vertex<Integer> vertex2 = graph.addVertex(2);
+
+    graph.addEdge(vertex1, vertex2, 5);
+
+    LinkedList<Edge<Integer>> neighbors = graph.getNeighbors(vertex1);
+
+    assertEquals(1, neighbors.size());
+
+    Edge<Integer> neighborEdge = neighbors.get(0);
+    assertEquals(vertex2, neighborEdge.getDestination());
+    assertEquals(5, neighborEdge.getWeight());
+  }
+
 
 }
