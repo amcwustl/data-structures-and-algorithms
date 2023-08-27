@@ -36,7 +36,13 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
 
   public void addEdge(Vertex<T> start, Vertex<T> destination, int weight)
   {
-    // TODO: implement me
+    if(!adjacencyLists.containsKey(start) || !adjacencyLists.containsKey(destination)){
+      throw new IllegalArgumentException("Both vertices must exist in the graph");
+    }
+
+    Edge<T> edgeToAdd = new Edge<>(destination, weight);
+    adjacencyLists.get(start).add(edgeToAdd);
+
   }
 
   public LinkedList<Vertex<T>> getVertices()  // getNodes()

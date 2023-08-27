@@ -8,7 +8,7 @@ public class GraphTest {
 
   @Test
   public void testAddVertex() {
-    Graph<Integer> sut = new Graph<>(10); 
+    Graph<Integer> sut = new Graph<>(10);
 
     Vertex<Integer> vertex = sut.addVertex(42);
 
