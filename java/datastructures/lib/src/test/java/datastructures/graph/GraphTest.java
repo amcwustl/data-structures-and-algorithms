@@ -57,7 +57,6 @@ public class GraphTest {
 
     Vertex<Integer> vertex1 = graph.addVertex(1);
     Vertex<Integer> vertex2 = graph.addVertex(2);
-    Vertex<Integer> vertex3 = graph.addVertex(3);
 
     graph.addEdge(vertex1, vertex2);
     LinkedList<Edge<Integer>> neighbors = graph.getNeighbors(vertex1);
@@ -79,6 +78,18 @@ public class GraphTest {
     Edge<Integer> neighborEdge = neighbors.get(0);
     assertEquals(vertex2, neighborEdge.getDestination());
     assertEquals(10, neighborEdge.getWeight());
+  }
+
+  @Test
+  public void testGetSize() {
+    Graph<Integer> graph = new Graph<>(10);
+
+    Vertex<Integer> vertex1 = graph.addVertex(1);
+    Vertex<Integer> vertex2 = graph.addVertex(2);
+    Vertex<Integer> vertex3 = graph.addVertex(3);
+
+    int actual = graph.size();
+    assertEquals(3, actual);
   }
 
 
