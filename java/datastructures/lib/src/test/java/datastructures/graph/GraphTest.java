@@ -36,6 +36,20 @@ public class GraphTest {
     Edge<Integer> edge = adjacencyList1.get(0);
     assertEquals(vertex2, edge.getDestination());
     assertEquals(5, edge.getWeight());
-
   }
+  @Test
+  public void testGetVertices() {
+    Graph<Integer> graph = new Graph<>(10);
+    Vertex<Integer> vertex1 = graph.addVertex(1);
+    Vertex<Integer> vertex2 = graph.addVertex(2);
+    Vertex<Integer> vertex3 = graph.addVertex(3);
+
+    LinkedList<Vertex<Integer>> vertices = graph.getVertices();
+
+    assertTrue(vertices.contains(vertex1));
+    assertTrue(vertices.contains(vertex2));
+    assertTrue(vertices.contains(vertex3));
+  }
+
+
 }
