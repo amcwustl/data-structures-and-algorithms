@@ -3,6 +3,7 @@ package datastructures.graph;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -108,6 +109,56 @@ public class GraphTest {
     Edge<Integer> neighborEdge = neighbors.get(0);
     assertEquals(vertex2, neighborEdge.getDestination());
     assertEquals(5, neighborEdge.getWeight());
+  }
+
+  @Test
+  void testBreadthFirstTraversal() {
+    Graph<Integer> graph = new Graph<>(5);
+    Vertex<Integer> vertex1 = graph.addVertex(1);
+    Vertex<Integer> vertex2 = graph.addVertex(2);
+    Vertex<Integer> vertex3 = graph.addVertex(3);
+    Vertex<Integer> vertex4 = graph.addVertex(4);
+
+    graph.addEdge(vertex1, vertex2);
+    graph.addEdge(vertex1, vertex3);
+    graph.addEdge(vertex2, vertex4);
+    graph.addEdge(vertex3, vertex4);
+
+    List<Vertex<Integer>> traversal = graph.breadthFirst(vertex1);
+
+    assertEquals(4, traversal.size());
+    assertTrue(traversal.contains(vertex1));
+    assertTrue(traversal.contains(vertex2));
+    assertTrue(traversal.contains(vertex3));
+    assertTrue(traversal.contains(vertex4));
+  }
+
+  @Test
+  void testBreadthFirstTraversalDisconnectedGraph() {
+    Graph<String> graph = new Graph<>(5);
+    Vertex<String> vertexA = graph.addVertex("A");
+    Vertex<String> vertexB = graph.addVertex("B");
+    Vertex<String> vertexC = graph.addVertex("C");
+
+    graph.addEdge(vertexA, vertexB);
+
+    List<Vertex<String>> traversal = graph.breadthFirst(vertexA);
+
+    assertEquals(2, traversal.size());
+    assertTrue(traversal.contains(vertexA));
+    assertTrue(traversal.contains(vertexB));
+    assertFalse(traversal.contains(vertexC));
+  }
+
+  @Test
+  void testBreadthFirstTraversalSingleNodeGraph() {
+    Graph<Double> graph = new Graph<>(1);
+    Vertex<Double> vertex = graph.addVertex(3.14);
+
+    List<Vertex<Double>> traversal = graph.breadthFirst(vertex);
+
+    assertEquals(1, traversal.size());
+    assertTrue(traversal.contains(vertex));
   }
 
 
