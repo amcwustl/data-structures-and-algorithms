@@ -2,7 +2,7 @@ package datastructures.graph;
 
 public class BusinessTrip {
 
-  public Integer businessTrip(Graph<String> graph, Vertex<String>[] cities) {
+  public static Integer businessTrip(Graph<String> graph, Vertex<String>[] cities) {
     if (cities == null || cities.length < 2) {
       return null;
     }
