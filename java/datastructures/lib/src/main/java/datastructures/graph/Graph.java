@@ -85,6 +85,14 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
     return output;
   }
 
+  public HashMap<Vertex<T>, LinkedList<Edge<T>>> getAdjacencyLists() {
+    return adjacencyLists;
+  }
+
+  public int getNumberOfVertices() {
+    return numberOfVertices;
+  }
+
   @Override
   public int compareTo(Graph<T> o)
   {
