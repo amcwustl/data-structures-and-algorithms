@@ -85,6 +85,40 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
     return output;
   }
 
+  public List<Vertex<T>> depthFirst(Vertex<T> vertex){
+    if(vertex == null){
+      throw new IllegalArgumentException("root vertex can not be null");
+    }
+    List<Vertex<T>> output = new ArrayList<>();
+    Stack<Vertex<T>> notVisited = new Stack<>();
+    HashSet<Vertex<T>> visited = new HashSet<>();
+    Vertex<T> curr;
+    LinkedList<Edge<T>> neighbors;
+    Boolean unVisitedChildren;
+
+    notVisited.push(vertex);
+
+    while(!notVisited.isEmpty()){
+      curr = notVisited.peek();
+      visited.add(curr);
+      neighbors = getNeighbors(curr);
+      unVisitedChildren = false;
+
+      for (Edge<T> neighbor : neighbors){
+        if(!visited.contains(neighbor.destination)){
+          visited.add(neighbor.destination);
+          notVisited.push(neighbor.destination);
+          unVisitedChildren = true;
+        }
+      }
+
+      if(!unVisitedChildren){
+        output.add(notVisited.pop());
+      }
+    }
+    return output;
+  }
+
   public HashMap<Vertex<T>, LinkedList<Edge<T>>> getAdjacencyLists() {
     return adjacencyLists;
   }
