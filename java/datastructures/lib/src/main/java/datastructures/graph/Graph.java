@@ -86,6 +86,9 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
   }
 
   public List<Vertex<T>> depthFirst(Vertex<T> vertex){
+    if(vertex == null){
+      throw new IllegalArgumentException("root vertex can not be null");
+    }
     List<Vertex<T>> output = new ArrayList<>();
     Stack<Vertex<T>> notVisited = new Stack<>();
     HashSet<Vertex<T>> visited = new HashSet<>();

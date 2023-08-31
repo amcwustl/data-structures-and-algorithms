@@ -161,5 +161,41 @@ public class GraphTest {
     assertTrue(traversal.contains(vertex));
   }
 
+  @Test
+  void testDepthFirstWithValidVertex() {
+    Graph<Integer> graph = new Graph<>(10);
+    Vertex<Integer> vertex1 = graph.addVertex(1);
+    Vertex<Integer> vertex2 = graph.addVertex(2);
+    graph.addEdge(vertex1, vertex2);
+
+    List<Vertex<Integer>> result = graph.depthFirst(vertex1);
+    System.out.println(result.get(0).value);
+    System.out.println(result.get(1).value);
+
+    assertEquals(2, result.size());
+    assertEquals(vertex2, result.get(0));
+    assertEquals(vertex1, result.get(1));
+  }
+
+  @Test
+  void testDepthFirstWithNullVertex() {
+    Graph<Integer> graph = new Graph<>(10);
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      graph.depthFirst(null);
+    });
+  }
+
+  @Test
+  void testDepthFirstWithSingleVertex() {
+    Graph<Integer> graph = new Graph<>(10);
+
+    Vertex<Integer> vertex = graph.addVertex(1);
+    List<Vertex<Integer>> result = graph.depthFirst(vertex);
+
+    assertEquals(1, result.size());
+    assertEquals(vertex, result.get(0));
+  }
+
 
 }
