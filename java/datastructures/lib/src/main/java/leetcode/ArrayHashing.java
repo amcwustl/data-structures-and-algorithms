@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class ArrayHashing {
@@ -18,5 +19,18 @@ public class ArrayHashing {
       }
     }
     return false;
+  }
+
+  public int[] twoSum(int[] nums, int target) {
+    HashMap<Integer, Integer> hashMap = new HashMap<>();
+    for (int i = 0; i < nums.length; i++){
+      int pairValue = target - nums[i];
+      if (hashMap.containsKey(pairValue)){
+        return new int[]{hashMap.get(pairValue), i};
+      } else {
+        hashMap.put(pairValue, i);
+      }
+    }
+
   }
 }
