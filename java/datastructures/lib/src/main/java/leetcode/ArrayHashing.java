@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class ArrayHashing {
 
@@ -31,6 +29,32 @@ public class ArrayHashing {
         hashMap.put(pairValue, i);
       }
     }
+
+  }
+
+  public List<List<String>> groupAnagrams(String[] strs) {
+
+    HashMap<String, List<String>> hashMap = new HashMap<>();
+    List<List<String>> returnList = new ArrayList<>();
+
+    for(int i = 0; i < strs.length; i++){
+      char[] charArray = strs[i].toCharArray();
+      Arrays.sort(charArray);
+      String sortedString = new String(charArray);
+
+      if(!hashMap.containsKey(sortedString)) {
+        List<String> originalWord = new ArrayList<>();
+        originalWord.add(strs[i]);
+        hashMap.put(sortedString, originalWord);
+      } else {
+        hashMap.get(sortedString).add(strs[i]);
+      }
+    }
+
+    for(String key : hashMap.keySet()) {
+      returnList.add(hashMap.get(key));
+    }
+    return returnList;
 
   }
 }
