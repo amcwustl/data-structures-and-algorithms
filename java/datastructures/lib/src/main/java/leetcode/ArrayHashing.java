@@ -58,5 +58,33 @@ public class ArrayHashing {
 
   }
 
-  public String
+  public int[] topKFrequent(int[] nums, int k) {
+    HashMap<Integer, Integer>
+
+  }
+
+  public int longestConsecutive(int[] nums) {
+    if (nums.length == 0){
+      return 0;
+    }
+    int longestSequence = 0;
+    HashSet<Integer> numbers = new HashSet<>();
+
+    for (int num : nums){
+      numbers.add(num);
+    }
+
+    for (int num : nums){
+      if(!numbers.contains(num - 1)){
+        int currentSequence = 1;
+        int currentElement = num;
+        while (numbers.contains(currentElement + 1)){
+          currentSequence += 1;
+          currentElement += 1;
+        }
+        longestSequence = Math.max(longestSequence, currentSequence);
+      }
+    }
+    return longestSequence;
+  }
 }
