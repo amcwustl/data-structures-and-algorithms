@@ -59,7 +59,37 @@ public class ArrayHashing {
   }
 
   public int[] topKFrequent(int[] nums, int k) {
-    HashMap<Integer, Integer>
+    HashMap<Integer, Integer> count = new HashMap<>();
+    ArrayList<Integer>[] freq = new ArrayList[nums.length+1];
+    int[] output = new int[k];
+    int length = nums.length;
+
+    for (int i = 0; i < freq.length; i++) {
+      freq[i] = new ArrayList<>();
+    }
+
+    for (int num : nums){
+      if (count.containsKey(num)){
+        count.put(num, count.get(num) + 1);
+      } else {
+        count.put(num, 1);
+      }
+    }
+
+    for (Integer key : count.keySet()){
+      freq[count.get(key)].add(key);
+    }
+
+    int completed = 0;
+    while (completed < k){
+      if (freq[length].isEmpty()){
+        length --;
+      } else {
+        output[completed] = freq[length].remove(0);
+        completed ++;
+      }
+    }
+    return output;
 
   }
 
