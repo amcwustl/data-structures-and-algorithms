@@ -117,4 +117,59 @@ public class ArrayHashing {
     }
     return longestSequence;
   }
+
+  public boolean isValidSudoku(char[][] board) {
+    // examine each row first
+    for (int i = 0; i < 9; i++){
+      HashSet<Character> seenChars = new HashSet<>();
+      for (int j = 0; j < 9; j++){
+        if (!(board[i][j] == '.')){
+          if (seenChars.contains(board[i][j])){
+            return false;
+          } else {
+            seenChars.add(board[i][j]);
+          }
+        }
+      }
+    }
+
+    // examine each column
+    for (int j = 0; j < 9; j++){
+      HashSet<Character> seenChars = new HashSet<>();
+      for (int i = 0; i < 9; i ++){
+        if(!(board[i][j] == '.')){
+          if (seenChars.contains(board[i][j])){
+            return false;
+          } else {
+            seenChars.add(board[i][j]);
+          }
+        }
+      }
+    }
+
+    // examine each box
+
+
+    for(int row = 0; row < 9; row = row+3){
+      for(int column = 0; column < 9; column = column+3){
+        HashSet<Character> seenChars = new HashSet<>();
+        for (int i = row; i < row + 3; i ++){
+          for (int j = column; j < column + 3; j++){
+            if(!(board[i][j] == '.')){
+              if (seenChars.contains(board[i][j])){
+                return false;
+              } else {
+                seenChars.add(board[i][j]);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return true;
+
+
+  }
+
 }
