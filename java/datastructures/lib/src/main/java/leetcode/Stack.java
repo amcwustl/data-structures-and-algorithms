@@ -29,5 +29,38 @@ public class Stack {
 
   }
 
+  public int evalRPN(String[] tokens) {
+
+    ArrayDeque<Integer> stack = new ArrayDeque<>();
+
+    for (String val : tokens){
+      if(val.equals("+")){
+        Integer x = stack.pop();
+        Integer y = stack.pop();
+        stack.push(x + y);
+      } else if (val.equals("-")) {
+        Integer x = stack.pop();
+        Integer y = stack.pop();
+        stack.push(y-x);
+      } else if (val.equals("*")) {
+        Integer x = stack.pop();
+        Integer y = stack.pop();
+        stack.push(x*y);
+      } else if (val.equals("/")) {
+        Integer x = stack.pop();
+        Integer y = stack.pop();
+        stack.push(y/x);
+      } else {
+        stack.push(Integer.parseInt(val));
+      }
+    }
+
+    return stack.pop();
+
+
+  }
+
+  }
+
 
 }
