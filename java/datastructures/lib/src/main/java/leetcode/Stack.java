@@ -1,8 +1,11 @@
 package leetcode;
 
 import java.util.ArrayDeque;
+import java.util.List;
 
 public class Stack {
+
+  ArrayDeque<String> parenStack = new ArrayDeque<>();
 
   public boolean isValid(String s) {
     ArrayDeque<Character> stack = new ArrayDeque<>();
@@ -61,6 +64,12 @@ public class Stack {
   }
 
   }
+
+public List<String> generateParenthesis(int n) {
+
+
+
+}
 
 
 }
